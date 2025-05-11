@@ -1,3 +1,5 @@
+# Script per configurare una monorepo con subtree
+
 #!/bin/bash
 
 # === CONFIGURAZIONE ===

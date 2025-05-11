@@ -1,3 +1,7 @@
+<!-- 
+# 📚 Documentazione del Progetto Monorepo
+-->
+
 ## 🔄 Gestione del Monorepo
 
 Il progetto utilizza una struttura monorepo con due script bash per semplificare la gestione:

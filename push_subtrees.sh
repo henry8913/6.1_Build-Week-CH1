@@ -1,3 +1,5 @@
+# Script to push changes from subtrees to their respective repositories
+
 #!/bin/bash
 
 # === CONFIGURAZIONE ===
