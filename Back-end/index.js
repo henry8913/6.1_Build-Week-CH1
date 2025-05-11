@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 2025;
+const port = process.env.PORT || 2025;
 
 // Middleware
 app.use(cors());
@@ -17,5 +17,5 @@ app.get("/info", (req, res) => {
 
 // Avvio del server
 app.listen(PORT, "localhost", () => {
-  console.log(`Server in esecuzione sulla porta ${PORT}`);
+  console.log(`Server in esecuzione sulla porta ${port}`);
 });
