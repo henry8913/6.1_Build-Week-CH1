@@ -1,0 +1,120 @@
+
+.hero-card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.cover-container {
+  position: relative;
+  height: 200px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-img {
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  position: absolute;
+  bottom: -76px;
+  left: 24px;
+}
+
+@media (max-width: 768px) {
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .profile-info {
+    text-align: center;
+    padding-top: 3rem;
+  }
+}
+
+.profile-info {
+  margin-top: 76px;
+  padding: 0 24px;
+}
+
+.main-info h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 4px;
+}
+
+.main-info p {
+  margin-bottom: 4px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.location, .connections {
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-size: 14px;
+}
+
+.contact-link {
+  color: #0a66c2;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.company-logos {
+  margin-top: 12px;
+}
+
+.company-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.company-logo-item img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.company-logo-item span {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.action-buttons {
+  margin-top: 16px;
+  padding: 0 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.action-buttons button {
+  font-size: 16px;
+  padding: 6px 16px;
+}
