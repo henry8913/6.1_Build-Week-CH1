@@ -39,12 +39,15 @@ passport.use('local', new LocalStrategy(
 ));
 
 // Configura Google Strategy
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${process.env.BACKEND_URL}/auth/google/callback`,
-    passReqToCallback: true
-  },
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: googleClientId,
+      clientSecret: googleClientSecret,
+      callbackURL: `${backendUrl}/auth/google/callback`,
+      passReqToCallback: true,
+      scope: ['profile', 'email']
+    },
     async (request, accessToken, refreshToken, profile, done) => {
         try {
           // Cerca l'utente con l'ID Google
@@ -195,11 +198,13 @@ export const googleAuth = (req, res, next) => {
 
 // Callback per autenticazione Google
 export const googleAuthCallback = (req, res, next) => {
-  passport.authenticate("google", {
-    successRedirect: process.env.FRONTEND_URL,
-    failureRedirect: `${process.env.FRONTEND_URL}/login`,
-    session: false
-  }, (err, user) => {
+  if (!googleClientId || !googleClientSecret) {
+    return res
+      .status(503)
+      .json({ message: "Autenticazione Google non configurata" });
+  }
+
+  passport.authenticate("google", (err, user) => {
     if (err) {
       return res.redirect(
         `${process.env.FRONTEND_URL || "http://localhost:5173"}/login?error=${err.message}`,
@@ -214,14 +219,9 @@ export const googleAuthCallback = (req, res, next) => {
     // Genera token JWT
     const token = generateToken(user._id);
 
-    // Se la richiesta viene da Postman, restituisci JSON
-    if (req.headers['user-agent'].includes('Postman')) {
-      res.json({ token, user });
-    } else {
-      // Altrimenti reindirizza al frontend
-      res.redirect(
-        `${process.env.FRONTEND_URL || "http://localhost:5173"}/login?token=${token}`,
-      );
-    }
+    // Reindirizza al frontend con il token
+    res.redirect(
+      `${process.env.FRONTEND_URL || "http://localhost:5173"}/login?token=${token}`,
+    );
   })(req, res, next);
 };

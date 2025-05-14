@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
         if (token) {
           // Configura l'header di autorizzazione
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          
+
           // Ottieni i dati dell'utente
           const response = await axios.get(`${API_URL}/auth/profile`);
           setUser(response.data);
@@ -43,18 +43,18 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      
+
       const response = await axios.post(`${API_URL}/auth/register`, userData);
-      
+
       // Salva il token nel localStorage
       localStorage.setItem('token', response.data.token);
-      
+
       // Configura l'header di autorizzazione
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
-      
+
       // Imposta l'utente nello stato
       setUser(response.data);
-      
+
       return response.data;
     } catch (error) {
       setError(error.response?.data?.message || 'Errore durante la registrazione');
@@ -64,23 +64,25 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Funzione di login
-  const login = async (email, password) => {
+  // Funzione di login locale
+  const loginLocal = async (email, password) => {
     try {
       setLoading(true);
       setError(null);
-      
-      const response = await axios.post(`${API_URL}/auth/login`, { email, password });
-      
+
+      const response = await axios.post(`${API_URL}/auth/login`, { email, password }, {
+        withCredentials: true
+      });
+
       // Salva il token nel localStorage
       localStorage.setItem('token', response.data.token);
-      
+
       // Configura l'header di autorizzazione
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
-      
+
       // Imposta l'utente nello stato
       setUser(response.data);
-      
+
       return response.data;
     } catch (error) {
       setError(error.response?.data?.message || 'Credenziali non valide');
@@ -94,10 +96,10 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     // Rimuovi il token dal localStorage
     localStorage.removeItem('token');
-    
+
     // Rimuovi l'header di autorizzazione
     delete axios.defaults.headers.common['Authorization'];
-    
+
     // Reimposta lo stato dell'utente
     setUser(null);
   };
@@ -108,25 +110,26 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Funzione per gestire il callback di Google
-  const handleGoogleCallback = (token) => {
-    if (token) {
-      // Salva il token nel localStorage
-      localStorage.setItem('token', token);
-      
-      // Configura l'header di autorizzazione
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      
-      // Ottieni i dati dell'utente
-      return axios.get(`${API_URL}/auth/profile`)
-        .then(response => {
-          setUser(response.data);
-          return response.data;
-        })
-        .catch(error => {
-          console.error('Errore durante il recupero del profilo:', error);
-          logout();
-          throw error;
-        });
+  const handleGoogleCallback = async (token) => {
+    try {
+      if (token) {
+        // Salva il token nel localStorage
+        localStorage.setItem('token', token);
+
+        // Configura l'header di autorizzazione
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        // Ottieni i dati dell'utente
+        const response = await axios.get(`${API_URL}/auth/profile`);
+        setUser(response.data);
+        setError(null);
+        return response.data;
+      }
+    } catch (error) {
+      console.error('Errore durante il callback di Google:', error);
+      setError('Errore durante l\'autenticazione con Google');
+      logout();
+      throw error;
     }
   };
 
@@ -137,7 +140,7 @@ export const AuthProvider = ({ children }) => {
         loading,
         error,
         register,
-        login,
+        loginLocal,
         logout,
         loginWithGoogle,
         handleGoogleCallback,
