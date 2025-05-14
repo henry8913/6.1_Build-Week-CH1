@@ -26,7 +26,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 const HomePage = () => {
   return (
     <>
-      <Container fluid className="px-0 px-sm-3">
+       <Container fluid className="px-0 px-sm-3 main-container">
         <Row className="mx-0">
           <Col xs={12} md={8}>
             <div className="mb-3">
