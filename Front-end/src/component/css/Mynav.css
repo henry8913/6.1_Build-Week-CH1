@@ -1,16 +1,18 @@
 .search-input {
   background-color: #eef3f8;
   border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
+  border-radius: 8px;
+  padding: 10px 16px;
   width: 280px;
   font-size: 14px;
+  transition: all 0.2s ease;
 }
 
 .search-input:focus {
   background-color: #ffffff;
   border: 2px solid rgba(0, 0, 0, 0.9);
-  box-shadow: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  outline: none;
 }
 
 .nav-item {
@@ -32,21 +34,28 @@
   .search-input {
     width: 100%;
     max-width: none;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    padding: 12px 16px;
   }
 
   .navbar-collapse {
     background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-top: 8px;
   }
 
   .nav-item {
-    padding: 12px !important;
+    padding: 16px !important;
     border-bottom: 1px solid rgba(0,0,0,0.08);
     width: 100%;
     text-align: left;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-item:hover {
+    background-color: rgba(0,0,0,0.03);
   }
 
   .nav-item:last-child {
@@ -58,11 +67,11 @@
   }
 
   .premium-link {
-    padding: 12px;
+    padding: 16px;
     text-align: left;
     width: 100%;
     border-top: 1px solid rgba(0,0,0,0.08);
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   .nav {
@@ -71,7 +80,7 @@
 
   .nav-text {
     display: inline;
-    margin-left: 10px;
+    margin-left: 12px;
     font-size: 14px;
   }
 
@@ -81,8 +90,10 @@
 
   .dropdown-menu {
     width: 100%;
-    margin-top: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 8px 0;
   }
 }
 

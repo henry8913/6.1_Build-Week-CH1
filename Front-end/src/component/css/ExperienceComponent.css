@@ -1,28 +1,42 @@
 .esperienze-container {
-  background-color: white;
-  border-radius: 10px;
-  padding: 24px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-  margin-bottom: 16px;
+  background-color: var(--card-background, white);
+  border-radius: var(--border-radius-lg, 12px);
+  padding: var(--spacing-lg, 24px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: var(--spacing-md, 16px);
+  border: 1px solid var(--border-color, #e0e0e0);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.esperienze-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: var(--font-size-lg, 20px);
   font-weight: 600;
-  margin-bottom: 20px;
-  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: var(--spacing-md, 16px);
+  color: var(--text-primary, rgba(0, 0, 0, 0.9));
+  padding-bottom: var(--spacing-xs, 4px);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
 }
 
 .experience-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-md, 16px);
 }
 
 .experience-item {
   border: none;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: var(--spacing-md, 16px) 0;
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  transition: background-color 0.2s ease;
+}
+
+.experience-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .experience-item:last-child {
@@ -35,37 +49,62 @@
 }
 
 @media (max-width: 768px) {
+  .esperienze-container {
+    padding: var(--spacing-md, 16px);
+    border-radius: var(--border-radius-md, 8px);
+  }
+  
+  .section-title {
+    font-size: 18px;
+    text-align: center;
+  }
+  
   .experience-content {
     flex-direction: column;
-    align-items: center; /* Center items vertically */
+    align-items: center;
+    gap: var(--spacing-sm, 8px);
   }
+  
   .company-logo {
-    margin: 0 auto 1rem;
-    width: 100%; /* Adjust logo size as needed */
-    max-width: 80px; /* Set a maximum width to prevent it from overflowing */
-    height: auto; /* Maintain aspect ratio */
-
+    margin: 0 auto var(--spacing-sm, 8px);
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    border-radius: var(--border-radius-sm, 4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+  
   .experience-details {
     text-align: center;
-    padding: 0 1rem;
+    padding: 0 var(--spacing-md, 16px);
   }
+  
   .experience-title {
-    font-size: 14px; /* Adjust font size as needed */
+    font-size: var(--font-size-sm, 14px);
   }
+  
   .company-name, .experience-date, .experience-location {
-    font-size: 12px; /* Adjust font size as needed */
-    margin-bottom: 0.5rem;
+    font-size: var(--font-size-xs, 12px);
+    margin-bottom: var(--spacing-xs, 4px);
   }
-
+  
+  .experience-item {
+    padding: var(--spacing-sm, 8px) 0;
+  }
 }
 
 
 .company-logo {
   width: 48px;
   height: 48px;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md, 8px);
   object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.company-logo:hover {
+  transform: scale(1.05);
 }
 
 .experience-details {
@@ -73,28 +112,32 @@
 }
 
 .experience-title {
-  font-size: 16px;
+  font-size: var(--font-size-md, 16px);
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.9);
-  margin: 0;
+  color: var(--text-primary, rgba(0, 0, 0, 0.9));
+  margin: 0 0 var(--spacing-xs, 4px) 0;
 }
 
 .company-name {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.9);
-  margin: 4px 0;
+  font-size: var(--font-size-sm, 14px);
+  color: var(--text-primary, rgba(0, 0, 0, 0.9));
+  margin: var(--spacing-xs, 4px) 0;
+  font-weight: 500;
 }
 
 .experience-date {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.6);
-  margin: 0;
+  font-size: var(--font-size-sm, 14px);
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+  margin: var(--spacing-xs, 4px) 0;
 }
 
 .experience-location {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.6);
-  margin: 4px 0 0;
+  font-size: var(--font-size-sm, 14px);
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+  margin: var(--spacing-xs, 4px) 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
 }
 
 .show-all {
