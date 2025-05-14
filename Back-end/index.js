@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
 import authRoutes from './routes/authRoutes.js';
+import profileRoutes from './routes/profileRoutes.js'
 
 dotenv.config();
 
@@ -43,6 +44,9 @@ app.get("/info", (req, res) => {
 
 // Rotte di autenticazione
 app.use('/auth', authRoutes);
+
+//Rotte per la pagina profilo
+app.use('/api', profileRoutes)
 
 // Avvio del server
 app.listen(PORT, "0.0.0.0", () => {
