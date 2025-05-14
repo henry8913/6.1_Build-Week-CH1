@@ -44,8 +44,8 @@ export default function Mynav() {
   return (
 
 <Navbar expand="lg" className="fixed-top bg-white border-bottom py-1">
-<Container className="d-flex align-items-center">
-  <div className="d-flex align-items-center gap-2">
+<Container>
+  <div className="d-flex align-items-center justify-content-between flex-wrap">
     <FaLinkedin size={40} color="#0A66C2"/>
     <Form className="mx-2 position-relative" style={{ width: '250px' }}>
       <Form.Control

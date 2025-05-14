@@ -73,7 +73,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="py-5">
+    <Container className="pt-5 mt-5">
       <Row className="justify-content-center">
         <Col md={6}>
           <Card className="shadow">
