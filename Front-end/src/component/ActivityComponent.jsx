@@ -82,7 +82,7 @@ export default function ActivityComponent() {
                 </div>
               </div>
               <div className="post-content">
-                <p>Quando qualche fenomeno vi dice che 'l'Italia potrebbe vivere di turismo' e poi vi chiedete perché la produttività italiana è bassa, guardate...</p>
+                <p>Quando qualche fenomeno vi dice che 'l\'Italia potrebbe vivere di turismo' e poi vi chiedete perché la produttività italiana è bassa, guardate...</p>
                 <img src="https://media.licdn.com/dms/image/v2/D4D22AQGuGlV7749kxg/feedshare-shrink_2048_1536/B4DZVw3q9VHwAo-/0/1741355398392?e=1747267200&v=beta&t=ne0CdUbh_e18rsn6ywpqfgSJ4DKo-n9KCYFjVKYcpIo" />
               </div>
               <div className="post-stats">

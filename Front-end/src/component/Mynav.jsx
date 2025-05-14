@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import { Col, Container, Form, Nav, Navbar, ListGroup, NavDropdown, Row } from 'react-bootstrap';
-import { FaLinkedin, FaHome, FaUserFriends, FaBriefcase, FaCommentDots, FaBell, FaTh } from 'react-icons/fa';
+import { Col, Container, Form, Nav, Navbar, ListGroup, NavDropdown, Row, Button } from 'react-bootstrap';
+import { FaLinkedin, FaHome, FaUserFriends, FaBriefcase, FaCommentDots, FaBell, FaTh, FaSignOutAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Mynav() {
   const [profiles, setProfiles] = useState([])
   const [filteredProfiles, setFilteredProfiles] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [showResults, setShowResults] = useState(false)
+  const { user, logout, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const url = import.meta.env.VITE_APIURL;
   const authKey = import.meta.env.VITE_APIKEY
@@ -126,6 +130,58 @@ export default function Mynav() {
         <div className="nav-text">Work</div>
       </Nav.Link>
       <Nav.Link href="#" className="premium-link">Try Premium for €0</Nav.Link>
+    </Nav>
+    
+    <Nav className="ml-auto d-flex align-items-center">
+      {isAuthenticated ? (
+        <>
+          <NavDropdown 
+            title={
+              <div className="d-flex align-items-center gap-2">
+                <img 
+                  src={user?.avatar || 'https://ui-avatars.com/api/?name=User&background=random'} 
+                  alt="Profile" 
+                  className="rounded-circle" 
+                  width="30" 
+                  height="30" 
+                />
+                <span>{user?.name || 'Utente'}</span>
+              </div>
+            } 
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item as={Link} to="/profile">Profilo</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item 
+              onClick={() => {
+                logout();
+                navigate('/login');
+              }}
+              className="text-danger d-flex align-items-center gap-2"
+            >
+              <FaSignOutAlt /> Logout
+            </NavDropdown.Item>
+          </NavDropdown>
+        </>
+      ) : (
+        <>
+          <Button 
+            as={Link} 
+            to="/login" 
+            variant="outline-primary" 
+            className="me-2"
+          >
+            Accedi
+          </Button>
+          <Button 
+            as={Link} 
+            to="/register" 
+            variant="primary"
+          >
+            Registrati
+          </Button>
+        </>
+      )}
     </Nav>
   </Navbar.Collapse>
 </Container>
