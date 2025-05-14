@@ -10,7 +10,7 @@ const LoginPage = () => {
     password: ''
   });
   const [validated, setValidated] = useState(false);
-  const { login, loginWithGoogle, error, loading, isAuthenticated, handleGoogleCallback } = useAuth();
+  const { loginLocal, loginWithGoogle, error, loading, isAuthenticated, handleGoogleCallback } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -61,7 +61,7 @@ const LoginPage = () => {
     }
 
     try {
-      await login(formData.email, formData.password);
+      await loginLocal(formData.email, formData.password);
       navigate('/');
     } catch (err) {
       console.error('Errore durante il login:', err);

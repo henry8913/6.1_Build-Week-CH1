@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import session from 'express-session';
 import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
@@ -17,9 +18,23 @@ mongoose.connect(process.env.MONGODB_URL)
   .catch(err => console.error('Errore di connessione a MongoDB:', err));
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  credentials: true
+}));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+}));
 app.use(passport.initialize());
+app.use(passport.session());
 
 // Info route
 app.get("/info", (req, res) => {
