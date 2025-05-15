@@ -46,7 +46,7 @@ app.get("/info", (req, res) => {
 app.use('/auth', authRoutes);
 
 //Rotte per la pagina profilo
-app.use('/api', profileRoutes)
+app.use('/', profileRoutes)
 
 // Avvio del server
 app.listen(PORT, "0.0.0.0", () => {
