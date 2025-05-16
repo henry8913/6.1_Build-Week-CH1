@@ -8,7 +8,7 @@ const experienceSchema = new mongoose.Schema({
     location: {type: String, required: true },
     description: {type: String, required: true },
     image: { type: String, required: true },
-    profile: {type: mongoose.Schema.Types.ObjectId, ref: 'Profile', required: true },
+    profile: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 }, {
     timestamps: true
 })
