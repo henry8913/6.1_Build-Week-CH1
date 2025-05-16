@@ -13,16 +13,22 @@ export default function HeroComponent() {
   const [user, setUser] = useState([])
 
   const url = import.meta.env.VITE_APIURL;
-  const authKey = import.meta.env.VITE_APIKEY
+
 
   useEffect(() => {
-    fetch(url, {
+      const token = localStorage.getItem("token")
+      console.log(token)
+
+    fetch(url + '/me', {
       headers: {
-        'Authorization': authKey
+        'Authorization': `Bearer ${token}`
       }
     })
       .then((res) => res.json())
-      .then((user) => setUser(user))
+      .then((user) => {
+        console.log(user)
+        setUser(user)
+      })
       .catch((err) => console.log('Errore nel fetch:', err))
   }, [])
 
@@ -38,7 +44,7 @@ export default function HeroComponent() {
 
         <ListGroup.Item key={user._id}  >
           <img
-            src="https://i.pinimg.com/736x/ea/c2/b7/eac2b7844ad390cd510dc94bb4e7a7ab.jpg"
+            src={user.avatar}
             className="profile-img"
             alt="Foto profilo"
           />
@@ -49,7 +55,7 @@ export default function HeroComponent() {
       <Card.Body>
         <div className="profile-info">
           <div className="main-info">
-            <h2>Ivan Ranza</h2>
+            <h2>{user.name} {user.lastName}</h2>
 
 
             <ListGroup.Item>
