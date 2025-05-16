@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -7,6 +6,7 @@ import passport from 'passport';
 import session from 'express-session';
 import authRoutes from './routes/authRoutes.js';
 import profileRoutes from './routes/profileRoutes.js'
+import experienceRoutes from './routes/experienceRoutes.js'
 
 dotenv.config();
 
@@ -47,6 +47,7 @@ app.use('/auth', authRoutes);
 
 //Rotte per la pagina profilo
 app.use('/', profileRoutes)
+app.use('/', experienceRoutes)
 
 // Avvio del server
 app.listen(PORT, "0.0.0.0", () => {

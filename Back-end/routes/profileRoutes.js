@@ -57,7 +57,7 @@ router.post('/profile', async (req, res, next) => {
 })
 
 //endPoint caricamento immagine profilo
-router.put('/:id/image', verifyToken, uploadImage.single('avatar'), async(req, res) => {
+router.put('/image/:id', verifyToken, uploadImage.single('avatar'), async(req, res) => {
     try {
         if(req.user._id.toString() !== req.params.id) {
             return res.status(403).json({message: "Non puoi modificare altri profili"})
@@ -74,7 +74,7 @@ router.put('/:id/image', verifyToken, uploadImage.single('avatar'), async(req, r
 })
 
 //endPoint modifica profilo
-router.put('/image/:id', verifyToken, uploadImage.single('avatar'), async(req, res) => {
+router.put('/:id', verifyToken, async(req, res) => {
     try {
         if(req.user._id.toString() !== req.params.id) {
             return res.status(403).json({message: "Non puoi modificare altri profili"})
