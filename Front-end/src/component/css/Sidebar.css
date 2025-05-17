@@ -1,11 +1,9 @@
 .sidebar {
-  width: 300px;
   position: sticky;
   top: 80px;
   margin-top: 80px;
   height: calc(100vh - 80px);
   overflow-y: auto;
-  padding-right: var(--spacing-sm, 8px);
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }

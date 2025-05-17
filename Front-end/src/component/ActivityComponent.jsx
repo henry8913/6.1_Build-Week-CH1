@@ -48,11 +48,11 @@ export default function ActivityComponent() {
                 </div>
               </div>
               <div className="post-content">
-                <p>Un ottimo editoriale di Maurizio Belpietro, in poche righe fa un'analisi lucida della scuola italiana. Ogni riferimento a persone o fatti è puramente...</p>
-                <img src="https://media.licdn.com/dms/image/v2/D4D22AQFFwQ9vxu-GWQ/feedshare-shrink_800/B4DZVhGyFDHwAg-/0/1741090924273?e=1747267200&v=beta&t=OqYrKsn0thpALVsw9m5k_Np7Y7Gqq7lpisevWlTowr0" />
+                <p>Sono molto lieto di vedere il riconoscimento per l'incredibile lavoro che il team di EPICODE ha svolto dietro le quinte. Stiamo guidando una profonda...</p>                
+                <img src="https://media.licdn.com/dms/image/v2/D4D22AQFFwQ9vxu-GWQ/feedshare-shrink_800/B4DZVhGyFDHwAg-/0/1741090924273?e=1750291200&v=beta&t=iH1MHNEfjTF7gHGiI0df5HR2Ugs7SKmrk5qrBBF0JrU" />
               </div>
               <div className="post-stats">
-                <span>15</span>
+                <span>43 · 1 commento · 1 diffusione post</span>
               </div>
               <div className="post-actions">
                 <Button variant="light"><HandThumbsUp /></Button>
@@ -83,7 +83,7 @@ export default function ActivityComponent() {
               </div>
               <div className="post-content">
                 <p>Quando qualche fenomeno vi dice che 'l\'Italia potrebbe vivere di turismo' e poi vi chiedete perché la produttività italiana è bassa, guardate...</p>
-                <img src="https://media.licdn.com/dms/image/v2/D4D22AQGuGlV7749kxg/feedshare-shrink_2048_1536/B4DZVw3q9VHwAo-/0/1741355398392?e=1747267200&v=beta&t=ne0CdUbh_e18rsn6ywpqfgSJ4DKo-n9KCYFjVKYcpIo" />
+                <img src="https://media.licdn.com/dms/image/v2/D4D22AQGuGlV7749kxg/feedshare-shrink_800/B4DZVw3q9VHwAg-/0/1741355398368?e=1750291200&v=beta&t=JjPGq0gLp8c8WZmv57I1jdtMqJ7oJ66mbrCbXPWPlOI" />
               </div>
               <div className="post-stats">
                 <span>43 · 1 commento · 1 diffusione post</span>
