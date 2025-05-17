@@ -46,7 +46,9 @@ export default function Mynav() {
 <Navbar expand="lg" className="fixed-top bg-white border-bottom py-1">
 <Container>
   <div className="d-flex align-items-center justify-content-between flex-wrap">
-    <FaLinkedin size={40} color="#0A66C2"/>
+    <Link to="/">
+      <FaLinkedin size={40} color="#0A66C2" style={{cursor: 'pointer'}} />
+    </Link>
     <Form className="mx-2 position-relative" style={{ width: '250px' }}>
       <Form.Control
         type="text"
@@ -68,7 +70,16 @@ export default function Mynav() {
               }}
             >
                 {filteredProfiles.slice(0, 8).map((profile) => (
-                <ListGroup.Item key={profile._id} className="d-flex align-items-center gap-2" style={{cursor:'pointer'}}>
+                <ListGroup.Item 
+                  key={profile._id} 
+                  className="d-flex align-items-center gap-2" 
+                  style={{cursor:'pointer'}}
+                  onClick={() => {
+                    navigate(`/profile/${profile._id}`);
+                    setShowResults(false);
+                    setSearchTerm('');
+                  }}
+                >
                   <img
                     src={profile.image}
                     alt={profile.name}
@@ -91,32 +102,32 @@ export default function Mynav() {
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mx-auto d-flex align-items-center gap-1">
-      <Nav.Link href="#" className="nav-item text-center px-3">
+      <Nav.Link as={Link} to="/" className="nav-item text-center px-3">
         <FaHome size={22} />
         <div className="nav-text">Home</div>
       </Nav.Link>
-      <Nav.Link href="#" className="nav-item text-center px-3">
+      <Nav.Link as={Link} to="/network" className="nav-item text-center px-3">
         <FaUserFriends size={22} />
         <div className="nav-text">My Network</div>
       </Nav.Link>
-      <Nav.Link href="#" className="nav-item text-center px-3">
+      <Nav.Link as={Link} to="/jobs" className="nav-item text-center px-3">
         <FaBriefcase size={22} />
         <div className="nav-text">Jobs</div>
       </Nav.Link>
-      <Nav.Link href="#" className="nav-item text-center px-3">
+      <Nav.Link as={Link} to="/messaging" className="nav-item text-center px-3">
         <FaCommentDots size={22} />
         <div className="nav-text">Messaging</div>
       </Nav.Link>
-      <Nav.Link href="#" className="nav-item text-center px-3">
+      <Nav.Link as={Link} to="/notifications" className="nav-item text-center px-3">
         <FaBell size={22} />
         <div className="nav-text">Notifications</div>
       </Nav.Link>
     </Nav>
     
     <Nav className="d-flex align-items-center gap-2">
-      <Nav.Link href="#" className="nav-item text-center">
+      <Nav.Link as={Link} to="/profile" className="nav-item text-center">
         <img 
-          src="https://imageio.forbes.com/specials-images/imageserve/67531eb2b5f7c9e191f632d7/0x0.jpg?format=jpg&crop=711,713,x316,y125,safe&height=416&width=416&fit=bounds" 
+          src={user?.avatar || 'https://ui-avatars.com/api/?name=User&background=random'} 
           width="24" 
           height="24" 
           className="rounded-circle" 
@@ -125,11 +136,11 @@ export default function Mynav() {
         <div className="nav-text">Me</div>
       </Nav.Link>
       <div className="vertical-divider"></div>
-      <Nav.Link href="#" className="nav-item text-center">
+      <Nav.Link as={Link} to="/work" className="nav-item text-center">
         <FaTh size={22} />
         <div className="nav-text">Work</div>
       </Nav.Link>
-      <Nav.Link href="#" className="premium-link">Try Premium for €0</Nav.Link>
+      <Nav.Link as={Link} to="/premium" className="premium-link">Try Premium for €0</Nav.Link>
     </Nav>
     
     <Nav className="ml-auto d-flex align-items-center">

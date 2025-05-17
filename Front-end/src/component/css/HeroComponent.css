@@ -1,15 +1,22 @@
 
 .hero-card {
   background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--border-radius-lg, 12px);
   overflow: hidden;
   margin-top: 80px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.hero-card:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .cover-container {
   position: relative;
   height: 200px;
+  background-color: #dce6f1;
 }
 
 .cover-image {
@@ -27,15 +34,32 @@
   position: absolute;
   bottom: -76px;
   left: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.profile-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
   .profile-img {
-    width: 120px;
-    height: 120px;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 104px;
+    height: 104px;
+    bottom: -52px;
+    left: 24px;
+    transform: none;
+  }
+
+  .hero-card {
+    margin-top: 20px;
+  }
+  
+  .profile-img:hover {
+    transform: scale(1.03);
   }
   
   .action-buttons {
@@ -56,14 +80,15 @@
 
 .profile-info {
   margin-top: 76px;
-  padding: 0 24px;
+  padding: 0 24px 24px;
 }
 
 .main-info h2 {
   font-size: 24px;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--text-primary, rgba(0, 0, 0, 0.9));
   margin-bottom: 4px;
+  line-height: 1.25;
 }
 
 .main-info p {
@@ -77,12 +102,18 @@
 }
 
 .contact-link {
-  color: #0a66c2;
+  color: var(--primary-color, #0a66c2);
   text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .contact-link:hover {
   text-decoration: underline;
+  background-color: var(--hover-color, rgba(10, 102, 194, 0.1));
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
 }
 
 .company-logos {
