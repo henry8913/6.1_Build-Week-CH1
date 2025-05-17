@@ -1,7 +1,7 @@
 /* UI/UX Optimization - LinkedIn Clone */
 
 :root {
-  /* Colori principali */
+  /* Colori principali - aggiornati secondo LinkedIn 2023 */
   --primary-color: #0a66c2;
   --secondary-color: #057642;
   --text-primary: rgba(0, 0, 0, 0.9);
@@ -9,6 +9,9 @@
   --background-color: #f3f2ef;
   --card-background: #ffffff;
   --border-color: #e0e0e0;
+  --hover-color: rgba(10, 102, 194, 0.1);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
   
   /* Spaziatura */
   --spacing-xs: 4px;
@@ -103,7 +106,7 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Ottimizzazioni responsive */
+/* Ottimizzazioni responsive - aggiornate secondo LinkedIn 2023 */
 @media (max-width: 768px) {
   .row {
     margin-left: -8px;
@@ -118,26 +121,31 @@ img {
   .card, .sidebar-section, .hero-card, .activity-container, .esperienze-container, .education-section-content {
     margin-bottom: var(--spacing-md);
     padding: var(--spacing-md) !important;
+    border-radius: 8px !important;
   }
   
   h1, h2, h3 {
-    font-size: 90%;
+    font-size: 95%;
   }
   
   p, .text-secondary {
-    font-size: 90%;
+    font-size: 95%;
   }
   
   .btn {
     padding: 6px 12px;
     font-size: 14px;
   }
+  
+  body {
+    padding-bottom: 60px; /* Spazio per la navigazione mobile */
+  }
 }
 
-/* Ottimizzazioni desktop */
+/* Ottimizzazioni desktop - aggiornate secondo LinkedIn 2023 */
 @media (min-width: 992px) {
   .container {
-    max-width: 1140px;
+    max-width: 1128px;
     margin: 0 auto;
   }
   
@@ -146,13 +154,23 @@ img {
   }
   
   .row {
-    margin-left: -16px;
-    margin-right: -16px;
+    margin-left: -12px;
+    margin-right: -12px;
   }
   
   .col, .col-md-4, .col-md-8, .col-lg-3, .col-lg-6, .col-lg-9 {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  /* Layout a tre colonne come LinkedIn */
+  .main-content {
+    display: grid;
+    grid-template-columns: 5fr 12fr 7fr;
+    gap: 24px;
+    max-width: 1128px;
+    margin: 0 auto;
+    padding-top: 24px;
   }
 }
 
